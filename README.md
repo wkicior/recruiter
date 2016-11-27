@@ -1,14 +1,14 @@
 # recruiter-service
-The prototype of the recruitment service.
-The project exposes some REST api services with the following functionalities:
--listing/saving applicants
--listing/saving job offers
--registering job offer for the aplicant
+The prototype of the recruitment service.  
+The project exposes some REST api services with the following functionalities:  
+-listing/saving applicants  
+-listing/saving job offers  
+-registering job offer for the aplicant  
 
-The applicant and job offer model classes are limited to names only.
-Extending them with more values would be the next step forward
+The applicant and job offer model classes are limited to names only.  
+Extending them with more values would be the next step forward  
 
-requirements to run: docker, dockier-compose
+requirements to run: docker, dockier-compose  
 
 # build:
 $ cd recruiter-service
@@ -34,6 +34,7 @@ applying for the offer
 curl -X POST http://localhost.localdomain:8090/recruiter-service/resources/applicants/[applicant_id]/applications/[offer_id]
 
 #example session
+Adds new job offer, registers new applicant and applies job offer to the applicant
 $ curl -H "Content-Type: application/json" -X POST -d '{"positionName":"Lead Java Engineer"}' http://localhost.localdomain:8090/recruiter-service/resources/offers
 
 $ curl http://localhost.localdomain:8090/recruiter-service/resources/offers
