@@ -1,5 +1,5 @@
 # recruiter-service
-Prototype recruitment service.
+The prototype of the recruitment service.
 The project exposes some REST api services with the following functionalities:
 -listing/saving applicants
 -listing/saving job offers
@@ -10,14 +10,14 @@ Extending them with more values would be the next step forward
 
 requirements to run: docker, dockier-compose
 
-build:
+# build:
 $ cd recruiter-service
 $ docker build -t wkicior/recruiter-service .
 
-run (from main directory):
+# run (from main directory):
 $ docker-compose up
 
-sample usage:
+#sample usage:
 listing applicants
 $ curl http://localhost.localdomain:8090/recruiter-service/resources/applicants
 
@@ -32,4 +32,22 @@ $ curl -H "Content-Type: application/json" -X POST -d '{"positionName":"Java arc
 
 applying for the offer
 curl -X POST http://localhost.localdomain:8090/recruiter-service/resources/applicants/[applicant_id]/applications/[offer_id]
+
+#example session
+$ curl -H "Content-Type: application/json" -X POST -d '{"positionName":"Lead Java Engineer"}' http://localhost.localdomain:8090/recruiter-service/resources/offers
+
+$ curl http://localhost.localdomain:8090/recruiter-service/resources/offers
+[{"type":"jobOffer","id":"583b6427c9e77c0137e45b10","positionName":"Lead Java Engineer"},{"type":"jobOffer","id":"583b6456c9e77c0137e45b11","positionName":"Senior Developer"}]
+
+$ curl -H "Content-Type: application/json" -X POST -d '{"name":"Wojciech Kicior"}' http://localhost.localdomain:8090/recruiter-service/resources/applicants
+
+$ curl http://localhost.localdomain:8090/recruiter-service/resources/applicants
+[{"type":"applicant","id":"583b64b2c9e77c0137e45b12","applications":[],"name":"Wojciech Kicior"}]
+
+curl -X POST  http://localhost.localdomain:8090/recruiter-service/resources/applicants/583b64b2c9e77c0137e45b12/applications/583b6427c9e77c0137e45b10
+
+$ curl http://localhost.localdomain:8090/recruiter-service/resources/applicants
+[{"type":"applicant","id":"583b64b2c9e77c0137e45b12","applications":[{"id":"583b6427c9e77c0137e45b10","positionName":"Lead Java Engineer"}],"name":"Wojciech Kicior"}]
+
+
 
