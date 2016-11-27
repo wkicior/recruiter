@@ -10,14 +10,14 @@ Extending them with more values would be the next step forward
 
 requirements to run: docker, dockier-compose  
 
-# build:
+# BUILD:
 $ cd recruiter-service
 $ docker build -t wkicior/recruiter-service .
 
-# run (from main directory):
+# RUN (from main directory):
 $ docker-compose up
 
-#sample usage:
+#EXAMPLE USAGE:
 listing applicants
 $ curl http://localhost.localdomain:8090/recruiter-service/resources/applicants
 
@@ -33,8 +33,8 @@ $ curl -H "Content-Type: application/json" -X POST -d '{"positionName":"Java arc
 applying for the offer
 curl -X POST http://localhost.localdomain:8090/recruiter-service/resources/applicants/[applicant_id]/applications/[offer_id]
 
-#example session
-Adds new job offer, registers new applicant and applies job offer to the applicant
+#EXAMPLE SESSION
+Adds new job offer, registers new applicant and applies job offer to the applicant  
 $ curl -H "Content-Type: application/json" -X POST -d '{"positionName":"Lead Java Engineer"}' http://localhost.localdomain:8090/recruiter-service/resources/offers
 
 $ curl http://localhost.localdomain:8090/recruiter-service/resources/offers
