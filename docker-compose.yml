@@ -1,0 +1,15 @@
+recruiter-mongo:
+  image: mongo
+  container_name: recruiter-mongo 
+  command: "--smallfiles"
+recruiter-service:
+  container_name: recruiter-service 
+  image: wkicior/recruiter-service
+  ports:
+    - "8090:8080"
+  privileged: true
+  volumes:
+    - ~/.m2:/root/.m2
+  links:
+    - recruiter-mongo:recruiter-mongo
+
